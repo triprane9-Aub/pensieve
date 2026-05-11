@@ -1,8 +1,17 @@
 # Pensieve
 
-A simple command-line journal for storing your memories, inspired by the Pensieve from Harry Potter.
+A journal for storing your memories, inspired by the Pensieve from Harry Potter. Use it from the command line, or pour memories into the basin through a magical web interface.
 
-## Usage
+## Web UI
+
+```bash
+pip3 install -r requirements.txt
+python3 app.py
+```
+
+Then open [http://localhost:5000](http://localhost:5000) in your browser.
+
+## Command-line usage
 
 Save a new memory:
 
