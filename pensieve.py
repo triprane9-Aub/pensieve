@@ -55,6 +55,18 @@ def delete_memory(target_id):
     print(f"Memory #{target_id} deleted.")
 
 
+def search_memories(term):
+    memories = load_memories()
+    matches = [m for m in memories if term.lower() in m["text"].lower()]
+    if not matches:
+        print(f'No memories matching "{term}".')
+        return
+    print(f'Found {len(matches)} memory(ies) matching "{term}":')
+    for m in matches:
+        when = datetime.fromisoformat(m["timestamp"]).strftime("%Y-%m-%d %H:%M")
+        print(f"#{m['id']:<3} {when}  {m['text']}")
+
+
 def list_memories():
     memories = load_memories()
     if not memories:
@@ -74,6 +86,7 @@ def print_help():
     print("  list           Show all memories")
     print("  delete <id>    Delete a memory by id")
     print("  edit <id> <text>  Replace the text of a memory")
+    print("  search <term>  Find memories containing a keyword")
 
 
 def main():
@@ -112,6 +125,12 @@ def main():
             return
         new_text = " ".join(sys.argv[3:])
         edit_memory(target_id, new_text)
+    elif command == "search":
+        if len(sys.argv) < 3:
+            print("Usage: python3 pensieve.py search <term>")
+            return
+        term = " ".join(sys.argv[2:])
+        search_memories(term)
     else:
         print(f"Unknown command: {command}")
         print_help()
