@@ -32,6 +32,17 @@ def add_memory(text):
     print(f"Memory #{memory['id']} saved.")
 
 
+def edit_memory(target_id, new_text):
+    memories = load_memories()
+    for m in memories:
+        if m["id"] == target_id:
+            m["text"] = new_text
+            save_memories(memories)
+            print(f"Memory #{target_id} updated.")
+            return
+    print(f"No memory with id #{target_id} found.")
+
+
 def delete_memory(target_id):
     memories = load_memories()
     remaining = [m for m in memories if m["id"] != target_id]
@@ -62,6 +73,7 @@ def print_help():
     print("  add <text>     Save a new memory")
     print("  list           Show all memories")
     print("  delete <id>    Delete a memory by id")
+    print("  edit <id> <text>  Replace the text of a memory")
 
 
 def main():
@@ -89,6 +101,17 @@ def main():
             print("Memory id must be a number.")
             return
         delete_memory(target_id)
+    elif command == "edit":
+        if len(sys.argv) < 4:
+            print('Usage: python3 pensieve.py edit <id> "new text"')
+            return
+        try:
+            target_id = int(sys.argv[2])
+        except ValueError:
+            print("Memory id must be a number.")
+            return
+        new_text = " ".join(sys.argv[3:])
+        edit_memory(target_id, new_text)
     else:
         print(f"Unknown command: {command}")
         print_help()
