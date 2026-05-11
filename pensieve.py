@@ -32,12 +32,23 @@ def add_memory(text):
     print(f"Memory #{memory['id']} saved.")
 
 
+def list_memories():
+    memories = load_memories()
+    if not memories:
+        print("No memories yet. Add one with: python3 pensieve.py add \"your memory\"")
+        return
+    for m in memories:
+        when = datetime.fromisoformat(m["timestamp"]).strftime("%Y-%m-%d %H:%M")
+        print(f"#{m['id']:<3} {when}  {m['text']}")
+
+
 def print_help():
     print("Pensieve — your personal memory store")
     print("Usage: python3 pensieve.py <command> [args]")
     print()
     print("Commands:")
     print("  add <text>   Save a new memory")
+    print("  list         Show all memories")
 
 
 def main():
@@ -53,6 +64,8 @@ def main():
             return
         text = " ".join(sys.argv[2:])
         add_memory(text)
+    elif command == "list":
+        list_memories()
     else:
         print(f"Unknown command: {command}")
         print_help()
