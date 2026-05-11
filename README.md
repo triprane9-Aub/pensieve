@@ -22,6 +22,12 @@ Delete a memory by id (remaining memories are renumbered):
 python3 pensieve.py delete 3
 ```
 
+Edit the text of an existing memory (keeps the original timestamp):
+
+```bash
+python3 pensieve.py edit 1 "the corrected memory text"
+```
+
 Memories are stored locally in `memories.json`.
 
 ## Roadmap
@@ -29,5 +35,6 @@ Memories are stored locally in `memories.json`.
 - [x] `add` — save a new memory
 - [x] `list` — see all memories
 - [x] `delete <id>` — remove a memory
+- [x] `edit <id> <text>` — update a memory's text
 - [ ] `view <id>` — revisit a specific memory
 - [ ] `search <term>` — find memories by keyword
