@@ -9,7 +9,7 @@ pip3 install -r requirements.txt
 python3 app.py
 ```
 
-Then open [http://localhost:5000](http://localhost:5000) in your browser.
+Then open [http://localhost:5050](http://localhost:5050) in your browser.
 
 ## Command-line usage
 
