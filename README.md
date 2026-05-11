@@ -28,6 +28,12 @@ Edit the text of an existing memory (keeps the original timestamp):
 python3 pensieve.py edit 1 "the corrected memory text"
 ```
 
+Search memories by keyword (case-insensitive):
+
+```bash
+python3 pensieve.py search "snow"
+```
+
 Memories are stored locally in `memories.json`.
 
 ## Roadmap
@@ -36,5 +42,6 @@ Memories are stored locally in `memories.json`.
 - [x] `list` — see all memories
 - [x] `delete <id>` — remove a memory
 - [x] `edit <id> <text>` — update a memory's text
+- [x] `search <term>` — find memories by keyword
 - [ ] `view <id>` — revisit a specific memory
 - [ ] `search <term>` — find memories by keyword
