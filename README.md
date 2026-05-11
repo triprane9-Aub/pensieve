@@ -4,15 +4,17 @@ A simple command-line journal for storing your memories, inspired by the Pensiev
 
 ## Usage
 
+Save a new memory:
+
 ```bash
-python3 pensieve.py
+python3 pensieve.py add "The first snow of the year fell today"
 ```
 
-(More commands coming soon.)
+Memories are stored locally in `memories.json`.
 
 ## Roadmap
 
-- [ ] `add` — save a new memory
+- [x] `add` — save a new memory
 - [ ] `list` — see all memories
 - [ ] `view <id>` — revisit a specific memory
 - [ ] `search <term>` — find memories by keyword
