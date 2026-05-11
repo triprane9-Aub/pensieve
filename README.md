@@ -10,11 +10,17 @@ Save a new memory:
 python3 pensieve.py add "The first snow of the year fell today"
 ```
 
+See all your memories:
+
+```bash
+python3 pensieve.py list
+```
+
 Memories are stored locally in `memories.json`.
 
 ## Roadmap
 
 - [x] `add` — save a new memory
-- [ ] `list` — see all memories
+- [x] `list` — see all memories
 - [ ] `view <id>` — revisit a specific memory
 - [ ] `search <term>` — find memories by keyword
