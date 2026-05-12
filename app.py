@@ -3,7 +3,7 @@
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for
 
-from pensieve import add_memory, load_memories
+from pensieve import add_memory, load_memories, delete_memory
 
 app = Flask(__name__)
 
@@ -24,6 +24,12 @@ def add():
     text = request.form.get("text", "").strip()
     if text:
         add_memory(text)
+    return redirect(url_for("index"))
+
+
+@app.route("/delete/<int:memory_id>", methods=["POST"])
+def delete(memory_id):
+    delete_memory(memory_id)
     return redirect(url_for("index"))
 
 

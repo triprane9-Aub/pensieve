@@ -36,6 +36,9 @@
           <article class="memory">
             <div class="memory-meta">#{{ m.id }} · {{ m.timestamp | pretty_date }}</div>
             <div class="memory-text">{{ m.text }}</div>
+            <form action="{{ url_for('delete', memory_id=m.id) }}" method="post" class="delete-form">
+              <button type="submit" class="delete-btn" title="Delete this memory">✕</button>
+            </form>
           </article>
         {% endfor %}
       {% else %}
