@@ -31,15 +31,20 @@
     </section>
 
     <section class="memories">
-      {% if memories %}
-        {% for m in memories %}
-          <article class="memory">
-            <div class="memory-meta">#{{ m.id }} · {{ m.timestamp | pretty_date }}</div>
-            <div class="memory-text">{{ m.text }}</div>
-            <form action="{{ url_for('delete', memory_id=m.id) }}" method="post" class="delete-form">
-              <button type="submit" class="delete-btn" title="Delete this memory">✕</button>
-            </form>
-          </article>
+      {% if groups %}
+        {% for group in groups %}
+          <div class="day-group">
+            <h2 class="day-header">{{ group.date | pretty_day }}</h2>
+            {% for m in group.memories %}
+              <article class="memory">
+                <div class="memory-meta">#{{ m.id }} · {{ m.timestamp | pretty_date }}</div>
+                <div class="memory-text">{{ m.text }}</div>
+                <form action="{{ url_for('delete', memory_id=m.id) }}" method="post" class="delete-form">
+                  <button type="submit" class="delete-btn" title="Delete this memory">✕</button>
+                </form>
+              </article>
+            {% endfor %}
+          </div>
         {% endfor %}
       {% else %}
         <p class="empty">The basin is empty. Your first memory awaits.</p>

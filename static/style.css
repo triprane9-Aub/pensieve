@@ -166,7 +166,33 @@ button:hover {
 .memories {
   display: flex;
   flex-direction: column;
+  gap: 2.5rem;
+}
+
+.day-group {
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
+}
+
+.day-header {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver);
+  opacity: 0.55;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.day-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(180, 210, 255, 0.12);
 }
 
 .memory {
