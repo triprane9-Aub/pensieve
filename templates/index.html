@@ -36,12 +36,22 @@
           <div class="day-group">
             <h2 class="day-header">{{ group.date | pretty_day }}</h2>
             {% for m in group.memories %}
-              <article class="memory">
+              <article class="memory" id="memory-{{ m.id }}">
                 <div class="memory-meta">#{{ m.id }} · {{ m.timestamp | pretty_date }}</div>
-                <div class="memory-text">{{ m.text }}</div>
-                <form action="{{ url_for('delete', memory_id=m.id) }}" method="post" class="delete-form">
-                  <button type="submit" class="delete-btn" title="Delete this memory">✕</button>
+                <div class="memory-text" id="text-{{ m.id }}">{{ m.text }}</div>
+                <form action="{{ url_for('edit', memory_id=m.id) }}" method="post" class="edit-form" id="edit-form-{{ m.id }}">
+                  <textarea name="text" class="edit-textarea">{{ m.text }}</textarea>
+                  <div class="edit-actions">
+                    <button type="button" class="cancel-btn" onclick="cancelEdit({{ m.id }})">Cancel</button>
+                    <button type="submit" class="save-btn">Save</button>
+                  </div>
                 </form>
+                <div class="card-actions">
+                  <button type="button" class="edit-btn" id="edit-btn-{{ m.id }}" onclick="startEdit({{ m.id }})" title="Edit this memory">✎</button>
+                  <form action="{{ url_for('delete', memory_id=m.id) }}" method="post">
+                    <button type="submit" class="delete-btn" title="Delete this memory">✕</button>
+                  </form>
+                </div>
               </article>
             {% endfor %}
           </div>
@@ -52,6 +62,19 @@
     </section>
   </main>
 <script>
+  function startEdit(id) {
+    document.getElementById('text-' + id).style.display = 'none';
+    document.getElementById('edit-form-' + id).style.display = 'block';
+    document.getElementById('edit-btn-' + id).style.visibility = 'hidden';
+    document.getElementById('edit-form-' + id).querySelector('textarea').focus();
+  }
+
+  function cancelEdit(id) {
+    document.getElementById('text-' + id).style.display = '';
+    document.getElementById('edit-form-' + id).style.display = 'none';
+    document.getElementById('edit-btn-' + id).style.visibility = '';
+  }
+
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const micBtn = document.getElementById('mic-btn');
   const micStatus = document.getElementById('mic-status');

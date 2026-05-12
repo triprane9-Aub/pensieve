@@ -4,7 +4,7 @@ from datetime import datetime, date, timedelta
 from itertools import groupby
 from flask import Flask, render_template, request, redirect, url_for
 
-from pensieve import add_memory, load_memories, delete_memory
+from pensieve import add_memory, load_memories, delete_memory, edit_memory
 
 app = Flask(__name__)
 
@@ -41,6 +41,14 @@ def add():
     text = request.form.get("text", "").strip()
     if text:
         add_memory(text)
+    return redirect(url_for("index"))
+
+
+@app.route("/edit/<int:memory_id>", methods=["POST"])
+def edit(memory_id):
+    new_text = request.form.get("text", "").strip()
+    if new_text:
+        edit_memory(memory_id, new_text)
     return redirect(url_for("index"))
 
 

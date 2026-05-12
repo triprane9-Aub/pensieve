@@ -212,12 +212,16 @@ button:hover {
   transform: translateY(-2px);
 }
 
-.delete-form {
+.card-actions {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
 }
 
+.edit-btn,
 .delete-btn {
   width: 28px;
   height: 28px;
@@ -226,7 +230,7 @@ button:hover {
   border: 1px solid rgba(180, 210, 255, 0.2);
   background: transparent;
   color: var(--silver);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 0;
   text-transform: none;
   opacity: 0;
@@ -234,10 +238,20 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
+.memory:hover .edit-btn,
 .memory:hover .delete-btn {
   opacity: 0.5;
+}
+
+.edit-btn:hover {
+  opacity: 1 !important;
+  background: rgba(80, 120, 220, 0.3);
+  border-color: rgba(140, 170, 255, 0.6);
+  box-shadow: 0 0 12px rgba(100, 140, 255, 0.4);
+  transform: none;
 }
 
 .delete-btn:hover {
@@ -245,6 +259,56 @@ button:hover {
   background: rgba(200, 60, 60, 0.3);
   border-color: rgba(255, 120, 120, 0.6);
   box-shadow: 0 0 12px rgba(255, 80, 80, 0.4);
+  transform: none;
+}
+
+.edit-form {
+  display: none;
+}
+
+.edit-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.75rem;
+  background: rgba(20, 25, 50, 0.6);
+  border: 1px solid rgba(180, 210, 255, 0.3);
+  border-radius: 8px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.edit-textarea:focus {
+  border-color: var(--silver);
+  box-shadow: 0 0 15px var(--silver-glow);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.save-btn {
+  padding: 0.4rem 1.5rem;
+}
+
+.cancel-btn {
+  padding: 0.4rem 1.5rem;
+  background: transparent;
+  border-color: rgba(180, 210, 255, 0.25);
+  opacity: 0.7;
+}
+
+.cancel-btn:hover {
+  opacity: 1;
+  background: rgba(180, 210, 255, 0.08);
+  box-shadow: none;
   transform: none;
 }
 
