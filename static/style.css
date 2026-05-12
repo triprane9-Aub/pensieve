@@ -186,6 +186,42 @@ button:hover {
   transform: translateY(-2px);
 }
 
+.delete-form {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.delete-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(180, 210, 255, 0.2);
+  background: transparent;
+  color: var(--silver);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory:hover .delete-btn {
+  opacity: 0.5;
+}
+
+.delete-btn:hover {
+  opacity: 1 !important;
+  background: rgba(200, 60, 60, 0.3);
+  border-color: rgba(255, 120, 120, 0.6);
+  box-shadow: 0 0 12px rgba(255, 80, 80, 0.4);
+  transform: none;
+}
+
 @keyframes rise {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
